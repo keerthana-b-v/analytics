@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise HR Data Engine | Neural Predictive Analytics</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div>
+                <h1>Enterprise <span class="title-accent">Data Intelligence</span> Engine</h1>
+                <p
+                    style="color: var(--text-muted); font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;">
+                    Multi-Variant Statistical Modeling • Indian Market Tier</p>
+            </div>
+            <div style="display: flex; gap: 10px;">
+                <button class="btn btn-primary" onclick="openModal()">+ Add Vector</button>
+            </div>
+        </header>
+
+        <div class="dashboard-grid">
+            <!-- Row 1: Core Performance Indicators -->
+            <div class="card col-span-3">
+                <span class="stat-lbl">Sample Size (N)</span>
+                <span class="stat-val" id="total-employees" style="font-size: 2rem; color: var(--accent);">0</span>
+                <div id="anomaly-summary" style="margin-top: 1rem;">Scanning engine...</div>
+            </div>
+
+            <div class="card col-span-3">
+                <span class="stat-lbl">Enterprise Avg CTC</span>
+                <span class="stat-val" id="avg-salary" style="font-size: 2rem; color: var(--primary);">₹0</span>
+                <div id="forecast-output" style="margin-top: 0.5rem;">Forecasting...</div>
+            </div>
+
+            <div class="card col-span-3">
+                <span class="stat-lbl">Workforce Efficiency</span>
+                <span class="stat-val" id="workforce-efficiency"
+                    style="font-size: 2rem; color: var(--success);">0%</span>
+                <div id="staff-roi" style="margin-top: 0.5rem; color: var(--text-muted); font-weight: 700;">ROI: 0.0
+                </div>
+            </div>
+
+            <div class="card col-span-3">
+                <span class="stat-lbl">Talent Attrition Risk</span>
+                <div id="simulation-output" style="margin-top: 0.5rem; font-weight: 800; font-size: 1.25rem;">Checking
+                    prob...</div>
+                <div id="equity-audit" style="margin-top: 0.5rem;">Audit system...</div>
+            </div>
+
+            <!-- Row 2: Analytics Visualizations & ONA -->
+            <div class="card col-span-4">
+                <h3
+                    style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1rem; border-left: 3px solid var(--primary); padding-left: 10px;">
+                    Departmental Asset Dist.</h3>
+                <div style="position: relative; height: 180px; width: 100%;">
+                    <canvas id="deptBarChart"></canvas>
+                </div>
+            </div>
+
+            <div class="card col-span-4">
+                <h3
+                    style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1rem; border-left: 3px solid var(--danger); padding-left: 10px;">
+                    Talent Stability Index</h3>
+                <div style="position: relative; height: 180px; width: 100%;">
+                    <canvas id="attritionChart"></canvas>
+                </div>
+            </div>
+
+            <div class="card col-span-4">
+                <h3
+                    style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1rem; border-left: 3px solid var(--accent); padding-left: 10px;">
+                    Influencer Hubs (ONA)</h3>
+                <div id="ona-hubs">Scanning networks...</div>
+            </div>
+
+            <!-- Row 3: Data Ledger & Intelligence Capsule -->
+            <div class="card col-span-8" style="min-height: 400px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                    <h2 style="font-size: 1.1rem; font-weight: 800; letter-spacing: -0.01em;">Analysis Ledger <span
+                            style="font-weight: 400; font-size: 0.7rem; color: var(--text-muted); margin-left: 10px;">V8.0
+                            PERSISTENCE OK</span></h2>
+                </div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Dept</th>
+                                <th>Performance</th>
+                                <th>CTC</th>
+                                <th>ROI</th>
+                                <th>Risk</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="employee-table-body"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card col-span-4">
+                <h3
+                    style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1rem; border-left: 3px solid var(--success); padding-left: 10px;">
+                    AI Intelligence Capsule</h3>
+                <div id="insight-box" style="font-size: 0.75rem; line-height: 1.7; color: var(--text-main);">
+                    Synthesizing intelligence vectors...
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="add-modal">
+        <div class="modal">
+            <h2 style="margin-bottom: 1rem; font-size: 1.25rem;">Input Analysis Vector</h2>
+            <form id="employee-form">
+                <div class="form-group">
+                    <label>Unique ID</label>
+                    <input type="number" id="emp-id" required placeholder="Ex: 8001">
+                </div>
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="emp-name" required placeholder="Subject Name">
+                </div>
+                <div class="form-group">
+                    <label>Department</label>
+                    <select id="emp-dept" required>
+                        <option value="Tech">Technology</option>
+                        <option value="Sales">Sales & Marketing</option>
+                        <option value="HR">Human Resources</option>
+                        <option value="Ops">Operations</option>
+                        <option value="Finance">Finance</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Position / Role</label>
+                    <input type="text" id="emp-pos" required placeholder="Lead Data Scientist">
+                </div>
+                <div class="form-group" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                    <div>
+                        <label>Annual CTC (₹)</label>
+                        <input type="number" id="emp-salary" required placeholder="2400000">
+                    </div>
+                    <div>
+                        <label>Rating (1.0 - 5.0)</label>
+                        <input type="number" id="emp-perf" step="0.1" min="1" max="5" required placeholder="4.5">
+                    </div>
+                </div>
+                <div style="display: flex; gap: 10px; margin-top: 1.5rem;">
+                    <button type="submit" class="btn btn-primary" style="flex: 2;">Commit Vector</button>
+                    <button type="button" class="btn" style="background: #e2e8f0; flex: 1;"
+                        onclick="closeModal()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+
+</html>

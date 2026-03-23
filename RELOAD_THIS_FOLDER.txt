@@ -1,0 +1,6 @@
+Please refresh your file explorer to see the modular files:
+- main.py
+- database.py
+- operations.py
+- README.md
+- requirements.txt

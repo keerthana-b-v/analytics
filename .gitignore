@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.env
+v8_initial_records.json
+test_db_init.py
+seed_db.py
