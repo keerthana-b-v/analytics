@@ -4,7 +4,7 @@ from operations import add_employee, remove_employee, promote_employee, display_
 def main():
     # Configuration - Update credentials here
     db_user = "postgres"
-    db_password = "password" 
+    db_password = "user123" 
     db_host = "localhost"
     db_port = "5432"
     

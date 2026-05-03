@@ -1,8 +1,11 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from database import get_db_connection
+from database import get_db_connection, initialize_db
 import uvicorn
+
+# Initialize database and tables
+initialize_db()
 
 app = FastAPI()
 

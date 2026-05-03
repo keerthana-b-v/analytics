@@ -1,7 +1,7 @@
 import psycopg2
 from psycopg2 import Error
 
-def get_db_connection(user="postgres", password="password", host="localhost", port="5432"):
+def get_db_connection(user="postgres", password="user123", host="localhost", port="5432"):
     """Establish and return a PostgreSQL database connection."""
     try:
         connection = psycopg2.connect(
@@ -16,7 +16,7 @@ def get_db_connection(user="postgres", password="password", host="localhost", po
         print(f"Error connecting to PostgreSQL: {e}")
         return None
 
-def initialize_db(user="postgres", password="password", host="localhost", port="5432"):
+def initialize_db(user="postgres", password="user123", host="localhost", port="5432"):
     """Initialize the PostgreSQL database and table if they don't exist."""
     try:
         # Connect to default 'postgres' database to create the 'emp' database
